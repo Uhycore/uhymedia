@@ -1,11 +1,10 @@
-import React from "react";
+import { createRoot } from 'react-dom/client';
+import { createInertiaApp } from '@inertiajs/inertia-react';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
-const App = () => {
-    return (
-        <div className="text-center text-2xl text-blue-500 mt-10">
-            Halo dari React + Laravel + Tailwind!
-        </div>
-    );
-};
-
-export default App;
+createInertiaApp({
+    resolve: (name) => resolvePageComponent(`./Pages/${name}.tsx`, import.meta.glob('./Pages/**/*.tsx')),
+    setup({ el, App, props }) {
+        createRoot(el).render(<App {...props} />);
+    },
+});
