@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
     <title>Laravel</title>
 
     <!-- Fonts -->
@@ -14,16 +12,13 @@
 
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @else
+        @viteReactRefresh
+        @vite(['resources/css/app.css', 'resources/js/main.tsx'])
     @endif
 </head>
 
-<body
-    class="font-sans antialiased dark:bg-gray-900  dark:text-white/50">
-    <h1 class="text-3xl text-red-500 font-bold underline">
-        Hello world!
-    </h1>
+<body class="font-sans antialiased dark:bg-gray-900 dark:text-white/50">
+    <div id="root"></div>
 </body>
 
 </html>
